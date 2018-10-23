@@ -28,7 +28,7 @@ public class ReadNews extends HttpServlet {
         List data;
         data = new NewsDaoImpl().readNews();
 
-        System.out.println("GetDataSingle:正在返回JSON数据");
+        System.out.println("ReadNews:正在返回JSON数据");
         String jsonSend = JSONUtil.objectToJson(data);
 
         StreamUtil.setOutput(out, jsonSend);

@@ -30,7 +30,7 @@ public class GetDataTeam extends HttpServlet {
         List data;
         data = new FormTeamDaoImpl().readFormTeam();
 
-        System.out.println("GetDataSingle:正在返回JSON数据");
+        System.out.println("GetDataTeam:正在返回JSON数据");
         String jsonSend = JSONUtil.objectToJson(data);
 
         StreamUtil.setOutput(out, jsonSend);
