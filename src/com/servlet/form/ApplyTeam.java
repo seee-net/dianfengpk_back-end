@@ -14,6 +14,6 @@ public class ApplyTeam extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        //TODO 团队申请
     }
 }
