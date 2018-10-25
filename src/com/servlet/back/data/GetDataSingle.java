@@ -2,14 +2,13 @@ package com.servlet.back.data;
 
 import com.dao.FormSingleDaoImpl;
 import com.util.JSONUtil;
-import com.util.StreamUtil;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(name = "GetDataSingle", urlPatterns = "/GetDataSingle")
@@ -23,7 +22,7 @@ public class GetDataSingle extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
 
-        ServletOutputStream out=response.getOutputStream();
+        PrintWriter out=response.getWriter();
 
         //TODO 做一个小验证
 
@@ -33,6 +32,6 @@ public class GetDataSingle extends HttpServlet {
         System.out.println("GetDataSingle:正在返回JSON数据");
         String jsonSend = JSONUtil.objectToJson(data);
 
-        StreamUtil.setOutput(out, jsonSend);
+        out.print(jsonSend);
     }
 }

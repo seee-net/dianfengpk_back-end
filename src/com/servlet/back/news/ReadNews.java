@@ -2,14 +2,13 @@ package com.servlet.back.news;
 
 import com.dao.NewsDaoImpl;
 import com.util.JSONUtil;
-import com.util.StreamUtil;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(name = "ReadNews", urlPatterns = "/ReadNews")
@@ -23,7 +22,7 @@ public class ReadNews extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
 
-        ServletOutputStream out=response.getOutputStream();
+        PrintWriter out=response.getWriter();
 
         List data;
         data = new NewsDaoImpl().readNews();
@@ -31,6 +30,6 @@ public class ReadNews extends HttpServlet {
         System.out.println("ReadNews:正在返回JSON数据");
         String jsonSend = JSONUtil.objectToJson(data);
 
-        StreamUtil.setOutput(out, jsonSend);
+        out.print(jsonSend);
     }
 }
